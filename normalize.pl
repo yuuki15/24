@@ -22,9 +22,11 @@ sub normalize {
 }
 
 # Regular expressions
-my $NUMBER   = qr{ \d+ }x; # A number.
+# A number.
+my $NUMBER   = qr{ \d+ }x;
 
-my $OPERATOR = qr{ [+\-*/] }x; # An operator.
+# An operator.
+my $OPERATOR = qr{ [+\-*/] }x;
 my $OP       = qr{ (?<OP> $OPERATOR ) }x;
 
 # An expression.
