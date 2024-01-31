@@ -63,7 +63,9 @@ my $ZERO = qr{ (?<ZERO> $ZERO_EXPR ) }x;
 # form without unary minus.
 sub negate {
     my ($expr) = @_;
-    $expr =~ m{ $A $OP $B }x or return $expr;
+    if (not $expr =~ m{ $A $OP $B }x) {
+        return $expr;
+    }
     my ($a, $op, $b) = ($+{A}, $+{OP}, $+{B});
 
     # a - b => (b - a)
