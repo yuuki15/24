@@ -34,7 +34,9 @@ for my $digits (combinations_with_repetition([0 .. 9], 4)) {
             my $subst_expr = eval qq("$expr");
             if ($value < 0) {
                 $subst_expr = negate($subst_expr);
-                $subst_expr =~ s{ \s+ | ^\( | \)$ }{}gx;
+                $subst_expr =~ s{ ^\( }{}x;
+                $subst_expr =~ s{ \)$ }{}x;
+                $subst_expr =~ s{ \s+ }{}gx;
             }
 
             my $normal_form = normalize($subst_expr);
