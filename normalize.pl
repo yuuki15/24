@@ -3,25 +3,6 @@ use strict;
 use warnings;
 my $DEBUG = 0;
 
-my @rules;
-
-# Returns the normal form of an expression.
-sub normalize {
-    my ($expr) = @_;
-    $expr =~ s{\s+}{}g; # Removes whitespace.
-
-    for (my $i = 0; $i < @rules; $i += 2) {
-        my ($rule, $pattern, $replace) = ($rules[$i], @{$rules[$i + 1]});
-
-        while ($expr =~ s{$pattern}{$replace->()}eg) {
-            $expr =~ s{\s+}{}g;
-            if ($DEBUG) { warn "=> $expr\t$rule\n" }
-        }
-    }
-
-    return $expr;
-}
-
 # Regular expressions.
 
 # A number.
@@ -50,13 +31,27 @@ my $ZERO_EXPR = qr{
 my $ZERO = qr{ (?<ZERO> $ZERO_EXPR ) }x;
 
 # Rewrite rules.
-@rules = (
+my @rules = (
     # Subtraction by zero to addition.
-    # "A-0=>A+0" => [
-    #     qr{ $A - $ZERO }x,
-    #     sub { "$+{A} + $+{ZERO}" },
-    # ],
+    "A-0=>A+0" => [ qr{ $A - $ZERO }x => sub { "$+{A} + $+{ZERO}" } ],
 );
+
+# Returns the normal form of an expression.
+sub normalize {
+    my ($expr) = @_;
+    $expr =~ s{\s+}{}g; # Removes whitespace.
+
+    for (my $i = 0; $i < @rules; $i += 2) {
+        my ($pattern, $replace) = @{$rules[$i + 1]};
+
+        while ($expr =~ s{$pattern}{$replace->()}eg) {
+            $expr =~ s{\s+}{}g;
+            if ($DEBUG) { warn "=> $expr\t$rules[$i]\n" }
+        }
+    }
+
+    return $expr;
+}
 
 # Returns the additive inverse of a negative expression.  The result is in a
 # form without unary minus.
