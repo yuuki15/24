@@ -47,7 +47,7 @@ for my $digits (combinations_with_repetition([0 .. 9], 4)) {
     }
 
     if (@solutions) {
-        local $, = "\t";
+        local $, = ",";
         local $\ = "\n";
         print join("", @$digits), scalar(@solutions), @solutions;
     }
