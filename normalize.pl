@@ -63,12 +63,12 @@ sub negate {
     $expr =~ m{ $A $OP $B }x or return $expr;
     my ($a, $op, $b) = ($+{A}, $+{OP}, $+{B});
 
-    # -(a - b) => (b - a)
+    # a - b => (b - a)
     if ($op eq '-') {
         return "($b $op $a)";
     }
 
-    # -(a + b) =>
+    # a + b =>
     #     ((-a) - b) if a < 0
     #     ((-b) - a) if b < 0
     if ($op eq '+') {
@@ -77,11 +77,11 @@ sub negate {
             : '(' . negate($b) . "- $a)";
     }
 
-    # -(a * b) =>
+    # a * b =>
     #     ((-a) * b) if a < 0
     #     (a * (-b)) if b < 0
     #
-    # -(a / b) =>
+    # a / b =>
     #     ((-a) / b) if a < 0
     #     (a / (-b)) if b < 0
     return eval($a) < 0
