@@ -1,7 +1,6 @@
 #!/usr/bin/env perl
 use strict;
 use warnings;
-
 my $DEBUG = 1;
 
 my @rules;
