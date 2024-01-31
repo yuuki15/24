@@ -22,11 +22,12 @@ sub normalize {
 }
 
 # Regular expressions
-my $NUMBER   = qr{ \d+ }x;
+my $NUMBER   = qr{ \d+ }x; # A number.
 
-my $OPERATOR = qr{ [+\-*/] }x;
+my $OPERATOR = qr{ [+\-*/] }x; # An operator.
 my $OP       = qr{ (?<OP> $OPERATOR ) }x;
 
+# An expression.
 my $EXPR = qr{
     (
         $NUMBER
@@ -37,6 +38,7 @@ my $EXPR = qr{
 my $A = qr{ (?<A> $EXPR ) }x;
 my $B = qr{ (?<B> $EXPR ) }x;
 
+# An expression whose value is 0.
 my $ZERO_EXPR = qr{
     ( $EXPR )
     (?(?{ eval($^N) == 0 }) | (*FAIL))
