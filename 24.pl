@@ -2,10 +2,10 @@
 use strict;
 use warnings;
 
-# Loads the subroutines `normalize`, `negate`, etc.
+# Loads the `normalize` and `negate` subroutines.
 require './normalize.pl';
 
-# Loads the possible 1,466 expressions.
+# Loads the possible 733 expressions.
 open my $fh, '<', 'expressions.txt' or die $!;
 my @exprs = <$fh>;
 close $fh;
