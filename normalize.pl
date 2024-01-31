@@ -14,7 +14,7 @@ sub normalize {
         my ($rule, $pattern, $replace) = ($rules[$i], @{$rules[$i + 1]});
         while ($expr =~ s/$pattern/$replace->()/eg) {
             $expr =~ s/\s+//g;
-            $DEBUG and warn "=> $expr\t$rule\n";
+            if ($DEBUG) { warn "=> $expr\t$rule\n" }
         }
     }
 
