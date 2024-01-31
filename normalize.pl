@@ -21,7 +21,7 @@ sub normalize {
     return $expr;
 }
 
-# Regular expressions
+# Regular expressions.
 # A number.
 my $NUMBER   = qr{ \d+ }x;
 
@@ -47,9 +47,9 @@ my $ZERO_EXPR = qr{
 }x;
 my $ZERO = qr{ (?<ZERO> $ZERO_EXPR ) }x;
 
-# Rewrite rules
+# Rewrite rules.
 @rules = (
-    # Subtraction by zero to addition
+    # Subtraction by zero to addition.
     'A-0=>A+0' => [
         qr{ $A - $ZERO }x,
         sub { "$+{A} + $+{ZERO}" },
