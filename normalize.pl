@@ -1,7 +1,7 @@
 #!/usr/bin/env perl
 use strict;
 use warnings;
-my $DEBUG = 1;
+my $DEBUG = 0;
 
 my @rules;
 
@@ -93,7 +93,8 @@ sub negate {
 }
 
 if (not caller) {
-    for my $expr ("((1+2)+3)-0") {
+    $DEBUG = 1;
+    for my $expr (@ARGV) {
         warn "$expr\n";
         print normalize($expr), "\n";
         warn "\n";
