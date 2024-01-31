@@ -22,6 +22,7 @@ sub normalize {
 }
 
 # Regular expressions.
+
 # A number.
 my $NUMBER   = qr{ \d+ }x;
 
