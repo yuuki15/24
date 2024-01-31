@@ -8,14 +8,14 @@ my @rules;
 # Returns the normal form of an expression.
 sub normalize {
     my ($expr) = @_;
-    $expr =~ s{\s+}{}g; # Removes whitespace.
 
     for (my $i = 0; $i < @rules; $i += 2) {
         my ($rule, $pattern, $replace) = ($rules[$i], @{$rules[$i + 1]});
 
-        # FIXME
         while ($expr =~ s{$pattern}{$replace->()}eg) {
+            # Removes whitespace.
             $expr =~ s{\s+}{}g;
+
             if ($DEBUG) { warn "=> $expr\t$rule\n" }
         }
     }
@@ -46,17 +46,17 @@ my $B = qr{ (?<B> $EXPR ) }x;
 # An expression whose value is 0.
 my $ZERO_EXPR = qr{
     ( $EXPR )
-    (?(?{ eval($^N) == 0 }) | (*FAIL) )
+    (?(?{ eval($^N) eq 0 }) | (*FAIL) )
 }x;
 my $ZERO = qr{ (?<ZERO> $ZERO_EXPR ) }x;
 
 # Rewrite rules.
 @rules = (
     # Subtraction by zero to addition.
-    "A-0=>A+0" => [
-        qr{ $A - $ZERO }x,
-        sub { "$+{A} + $+{ZERO}" },
-    ],
+    # "A-0=>A+0" => [
+    #     qr{ $A - $ZERO }x,
+    #     sub { "$+{A} + $+{ZERO}" },
+    # ],
 );
 
 # Returns the additive inverse of a negative expression.  The result is in a

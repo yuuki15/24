@@ -5,6 +5,8 @@ use warnings;
 # Loads the `normalize` and `negate` subroutines.
 require "./normalize.pl";
 
+my $number_to_make = shift || 24;
+
 # Loads the possible 733 expressions.
 open my $fh, "<", "expressions.txt" or die $!;
 my @exprs = <$fh>;
@@ -28,11 +30,11 @@ for my $digits (combinations_with_repetition([0 .. 9], 4)) {
             next;
         }
 
-        # FIXME
-        if ($value == 10 or $value == -10) {
+        if ($value eq $number_to_make or $value eq -$number_to_make) {
             my $subst_expr = eval qq("$expr");
             if ($value < 0) {
                 $subst_expr = negate($subst_expr);
+                $subst_expr =~ s{ \s+ | ^\( | \)$ }{}gx;
             }
 
             my $normal_form = normalize($subst_expr);
