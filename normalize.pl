@@ -8,12 +8,12 @@ my @rules;
 # Returns the normal form of an expression.
 sub normalize {
     my ($expr) = @_;
-    $expr =~ s/\s+//g; # Removes whitespace.
+    $expr =~ s{\s+}{}g; # Removes whitespace.
 
     for (my $i = 0; $i < @rules; $i += 2) {
         my ($rule, $pattern, $replace) = ($rules[$i], @{$rules[$i + 1]});
-        while ($expr =~ s/$pattern/$replace->()/eg) {
-            $expr =~ s/\s+//g;
+        while ($expr =~ s{$pattern}{$replace->()}eg) {
+            $expr =~ s{\s+}{}g;
             if ($DEBUG) { warn "=> $expr\t$rule\n" }
         }
     }
