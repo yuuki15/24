@@ -12,6 +12,8 @@ sub normalize {
 
     for (my $i = 0; $i < @rules; $i += 2) {
         my ($rule, $pattern, $replace) = ($rules[$i], @{$rules[$i + 1]});
+
+        # FIXME
         while ($expr =~ s{$pattern}{$replace->()}eg) {
             $expr =~ s{\s+}{}g;
             if ($DEBUG) { warn "=> $expr\t$rule\n" }
