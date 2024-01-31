@@ -46,7 +46,7 @@ my $B = qr{ (?<B> $EXPR ) }x;
 # An expression whose value is 0.
 my $ZERO_EXPR = qr{
     ( $EXPR )
-    (?(?{ eval($^N) == 0 })|(*FAIL))
+    (?(?{ eval($^N) == 0 }) | (*FAIL) )
 }x;
 my $ZERO = qr{ (?<ZERO> $ZERO_EXPR ) }x;
 
