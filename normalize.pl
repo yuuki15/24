@@ -9,13 +9,14 @@ my @rules;
 sub normalize {
     my ($expr) = @_;
 
+    # Removes whitespace.
+    $expr =~ s{\s+}{}g;
+
     for (my $i = 0; $i < @rules; $i += 2) {
         my ($rule, $pattern, $replace) = ($rules[$i], @{$rules[$i + 1]});
 
         while ($expr =~ s{$pattern}{$replace->()}eg) {
-            # Removes whitespace.
             $expr =~ s{\s+}{}g;
-
             if ($DEBUG) { warn "=> $expr\t$rule\n" }
         }
     }
