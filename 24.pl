@@ -2,8 +2,53 @@
 use strict;
 use warnings;
 
-for my $combination (combinations_with_repetition([0 .. 9], 4)) {
-    print "@$combination\n";
+# Loads the subroutines `normalize`, `negate`, etc.
+require './normalize.pl';
+
+# Loads the possible 1,466 expressions.
+open my $fh, '<', 'expressions.txt' or die $!;
+my @exprs = <$fh>;
+close $fh;
+chomp @exprs;
+
+# Iterates over 715 possible combinations of digits.
+for my $digits (combinations_with_repetition([0 .. 9], 4)) {
+    my ($a, $b, $c, $d) = @$digits;
+
+    my @solutions;
+    my %seen;
+
+    # Iterates over the expressions.
+    for my $expr (@exprs) {
+        my $value = eval $expr;
+
+        # In case of division by zero, silently continues to the next
+        # expression.
+        if ($@) {
+            next;
+        }
+
+        # FIXME
+        if ($value == 10 or $value == -10) {
+            my $subst_expr = eval qq("$expr");
+            if ($value < 0) {
+                $subst_expr = negate($subst_expr);
+            }
+
+            my $normal_form = normalize($subst_expr);
+
+            if (not exists $seen{$normal_form}) {
+                push @solutions, $normal_form;
+                $seen{$normal_form} = 1;
+            }
+        }
+    }
+
+    if (@solutions) {
+        local $, = "\t";
+        local $\ = "\n";
+        print join('', @$digits), scalar(@solutions), @solutions;
+    }
 }
 
 # Generates the k-combinations with repetition of an array, like Python's
