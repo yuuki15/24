@@ -51,7 +51,7 @@ my $ZERO = qr{ (?<ZERO> $ZERO_EXPR ) }x;
 # Rewrite rules.
 @rules = (
     # Subtraction by zero to addition.
-    'A-0=>A+0' => [
+    "A-0=>A+0" => [
         qr{ $A - $ZERO }x,
         sub { "$+{A} + $+{ZERO}" },
     ],
@@ -65,17 +65,17 @@ sub negate {
     my ($a, $op, $b) = ($+{A}, $+{OP}, $+{B});
 
     # a - b => (b - a)
-    if ($op eq '-') {
+    if ($op eq "-") {
         return "($b $op $a)";
     }
 
     # a + b =>
     #     ((-a) - b) if a < 0
     #     ((-b) - a) if b < 0
-    if ($op eq '+') {
+    if ($op eq "+") {
         return eval($a) < 0
-            ? '(' . negate($a) . "- $b)"
-            : '(' . negate($b) . "- $a)";
+            ? "(" . negate($a) . "- $b)"
+            : "(" . negate($b) . "- $a)";
     }
 
     # a * b =>
@@ -86,12 +86,12 @@ sub negate {
     #     ((-a) / b) if a < 0
     #     (a / (-b)) if b < 0
     return eval($a) < 0
-        ? '(' . negate($a) . "$op $b)"
-        : "($a $op" . negate($b) . ')';
+        ? "(" . negate($a) . "$op $b)"
+        : "($a $op" . negate($b) . ")";
 }
 
 if (not caller) {
-    for my $expr ('((1+2)+3)-0') {
+    for my $expr ("((1+2)+3)-0") {
         warn "$expr\n";
         print normalize($expr), "\n";
         warn "\n";

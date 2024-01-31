@@ -3,10 +3,10 @@ use strict;
 use warnings;
 
 # Loads the `normalize` and `negate` subroutines.
-require './normalize.pl';
+require "./normalize.pl";
 
 # Loads the possible 733 expressions.
-open my $fh, '<', 'expressions.txt' or die $!;
+open my $fh, "<", "expressions.txt" or die $!;
 my @exprs = <$fh>;
 close $fh;
 chomp @exprs;
@@ -47,7 +47,7 @@ for my $digits (combinations_with_repetition([0 .. 9], 4)) {
     if (@solutions) {
         local $, = "\t";
         local $\ = "\n";
-        print join('', @$digits), scalar(@solutions), @solutions;
+        print join("", @$digits), scalar(@solutions), @solutions;
     }
 }
 
