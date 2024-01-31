@@ -11,11 +11,10 @@ sub normalize {
     $expr =~ s/\s+//g; # Removes whitespace.
 
     for (my $i = 0; $i < @rules; $i += 2) {
-        my ($rule_name, $pattern, $replace) = ($rules[$i], @{$rules[$i + 1]});
-
+        my ($rule, $pattern, $replace) = ($rules[$i], @{$rules[$i + 1]});
         while ($expr =~ s/$pattern/$replace->()/eg) {
             $expr =~ s/\s+//g;
-            $DEBUG and warn "=> $expr\t$rule_name\n";
+            $DEBUG and warn "=> $expr\t$rule\n";
         }
     }
 
