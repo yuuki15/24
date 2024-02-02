@@ -10,7 +10,7 @@ use warnings;
 my $VERBOSE = 0;
 
 #
-# Regular expressions.
+# Regular expressions.  Cf.: https://perldoc.perl.org/perlre
 #
 
 # A number.
