@@ -46,7 +46,7 @@ for my $numbers (combinations_with_repetition(\@numbers_to_use, 4)) {
     for my $expr (@expressions) {
         my $value = eval $expr;
 
-        # Skips if there is a division by zero.
+        # Skips on a division by zero.
         if ($@) {
             next;
         }
