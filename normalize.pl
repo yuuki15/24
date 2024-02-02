@@ -56,7 +56,7 @@ my @rules = (
 # Returns the normal form of an expression.
 sub normalize {
     my ($expr) = @_;
-    $expr =~ s/\s+//g; # Removes whitespace.
+    $expr =~ s/\s+//g;
 
     for (my $i = 0; $i < @rules; $i += 2) {
         my ($pattern, $replace) = @{$rules[$i + 1]};
