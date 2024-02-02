@@ -1,6 +1,6 @@
 #!/usr/bin/env perl
 #
-# Normalizes an expression that represents a solution to the 24 puzzle.
+# Normalizes expressions that represent solutions to the 24 puzzle.
 #
 # Usage:
 # perl normalize.pl [EXPR1] [EXPR2] ...
