@@ -51,19 +51,11 @@ for my $numbers (combinations_with_repetition(\@numbers_to_use, 4)) {
             next;
         }
 
-        if ($value eq $number_to_make or $value eq -$number_to_make) {
+        # Checks if the value is equal to the number to make, ignoring the sign.
+        if (abs($value) eq $number_to_make) {
             # The expression with variables substituted with numbers (but not
             # evaluated).
             my $subst_expr = eval qq("$expr");
-            # E.g.:
-            #
-            # | $a          | 1
-            # | $b          | 2
-            # | $c          | 3
-            # | $d          | 4
-            # | $expr       | "(($a*$b)*$c)*$d"
-            # | $value      | 24
-            # | $subst_expr | "((1*2)*3)*4"
 
             if ($value < 0) {
                 $subst_expr = negate($subst_expr);
