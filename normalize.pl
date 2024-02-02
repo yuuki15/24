@@ -5,8 +5,10 @@
 # Usage:
 # perl normalize.pl [EXPR1] [EXPR2] ...
 #
+use v5.10;
 use strict;
 use warnings;
+use re "eval";
 my $VERBOSE = 0;
 
 #
@@ -73,9 +75,7 @@ sub normalize {
 sub negate {
     my ($expr) = @_;
     $expr =~ s/\s+//g;
-    if (not $expr =~ m{ $A $OP $B }x) {
-        return $expr;
-    }
+    $expr =~ m{ $A $OP $B }x or return $expr;
     my ($a, $op, $b) = ($+{A}, $+{OP}, $+{B});
 
     # a - b => (b - a)

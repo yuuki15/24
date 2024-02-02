@@ -5,31 +5,21 @@
 # Usage:
 # perl 24.pl [number to make=24] [min number to use=1] [max number to use=13]
 #
+use v5.10;
 use strict;
 use warnings;
+use autodie;
 
-my $number_to_make = shift;
-if (not defined $number_to_make) {
-    $number_to_make = 24;
-}
-
-my $min = shift;
-if (not defined $min) {
-    $min = 1;
-}
-
-my $max = shift;
-if (not defined $max) {
-    $max = 13;
-}
-
-my @numbers_to_use = ($min .. $max);
+my $number_to_make    = shift // 24;
+my $min_number_to_use = shift // 1;
+my $max_number_to_use = shift // 13;
+my @numbers_to_use    = ($min_number_to_use .. $max_number_to_use);
 
 # Loads the `normalize` and `negate` subroutines.
 require "./normalize.pl";
 
 # Loads the possible 733 expressions.  Cf.: https://oeis.org/A247982
-open my $fh, "<", "expressions.txt" or die $!;
+open my $fh, "<", "expressions.txt";
 my @expressions = map { s/\s+//g; $_ } <$fh>; # Removes whitespace.
 close $fh;
 
@@ -75,7 +65,7 @@ for my $numbers (combinations_with_repetition(\@numbers_to_use, 4)) {
         local $, = "\t";
         local $\ = "\n";
         print(
-            join($max < 10 ? "" : " ", @$numbers),
+            join($max_number_to_use < 10 ? "" : " ", @$numbers),
             scalar(@solutions),
             @solutions,
         );
