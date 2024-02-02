@@ -1,9 +1,17 @@
 #!/usr/bin/env perl
+#
+# Normalizes an expression that represents a solution to the 24 puzzle.
+#
+# Usage:
+# perl normalize.pl [EXPR1] [EXPR2] ...
+#
 use strict;
 use warnings;
 my $DEBUG = 0;
 
+#
 # Regular expressions.
+#
 
 # A number.
 my $NUMBER   = qr{ \d+ }x;
@@ -30,7 +38,9 @@ my $ZERO_EXPR = qr{
 }x;
 my $ZERO = qr{ (?<ZERO> $ZERO_EXPR ) }x;
 
+#
 # Rewrite rules.
+#
 my @rules = (
     # Subtraction by zero to addition.
     # "A-0=>A+0" => [ qr{ $A - $ZERO }x => sub { "$+{A} + $+{ZERO}" } ],
