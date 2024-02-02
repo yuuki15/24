@@ -54,13 +54,13 @@ my @rules = (
 # Returns the normal form of an expression.
 sub normalize {
     my ($expr) = @_;
-    $expr =~ s{\s+}{}g; # Removes whitespace.
+    $expr =~ s/\s+//g; # Removes whitespace.
 
     for (my $i = 0; $i < @rules; $i += 2) {
         my ($pattern, $replace) = @{$rules[$i + 1]};
 
-        while ($expr =~ s{$pattern}{$replace->()}eg) {
-            $expr =~ s{\s+}{}g;
+        while ($expr =~ s/$pattern/$replace->()/eg) {
+            $expr =~ s/\s+//g;
             if ($VERBOSE) { warn "=> $expr\t$rules[$i]\n" }
         }
     }
@@ -68,11 +68,11 @@ sub normalize {
     return $expr;
 }
 
-# Returns the additive inverse of a negative expression.  The result is in a
-# form without unary minus.
+# Returns the additive inverse of an expression whose value is negative.  The
+# result does not contain a unary minus.
 sub negate {
     my ($expr) = @_;
-    $expr =~ s{\s+}{}g;
+    $expr =~ s/\s+//g;
     if (not $expr =~ m{ $A $OP $B }x) {
         return $expr;
     }
