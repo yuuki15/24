@@ -33,7 +33,7 @@ for my $digits (combinations_with_repetition([0 .. 9], 4)) {
     for my $expr (@exprs) {
         my $value = eval $expr;
 
-        # Ignores the division by zero and continues to the next expression.
+        # Skips to the next expression if there's a division by zero.
         if ($@) {
             next;
         }
