@@ -1,4 +1,10 @@
 #!/usr/bin/env perl
+#
+# Lists all the solutions to the 24 puzzle.
+#
+# Usage:
+# perl 24.pl [number to make=24]
+#
 use strict;
 use warnings;
 
