@@ -7,7 +7,7 @@
 #
 use strict;
 use warnings;
-my $DEBUG = 0;
+my $VERBOSE = 0;
 
 #
 # Regular expressions.
@@ -56,7 +56,7 @@ sub normalize {
 
         while ($expr =~ s{$pattern}{$replace->()}eg) {
             $expr =~ s{\s+}{}g;
-            if ($DEBUG) { warn "=> $expr\t$rules[$i]\n" }
+            if ($VERBOSE) { warn "=> $expr\t$rules[$i]\n" }
         }
     }
 
@@ -100,7 +100,7 @@ sub negate {
 }
 
 if (not caller) {
-    $DEBUG = 1;
+    $VERBOSE = 1;
     for my $expr (@ARGV) {
         warn "$expr\n";
         print normalize($expr), "\n";
