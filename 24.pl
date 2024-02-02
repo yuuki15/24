@@ -11,7 +11,10 @@ use warnings;
 # Loads the `normalize` and `negate` subroutines.
 require "./normalize.pl";
 
-my $number_to_make = shift || 24;
+my $number_to_make = shift;
+if (not defined $number_to_make) {
+    $number_to_make = 24;
+}
 
 # Loads the possible 733 expressions.
 open my $fh, "<", "expressions.txt" or die $!;
