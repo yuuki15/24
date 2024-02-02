@@ -41,6 +41,7 @@ my $ZERO = qr{ (?<ZERO> $ZERO_EXPR ) }x;
 #
 # Rewrite rules.
 #
+
 my @rules = (
     # Subtraction by zero to addition.
     # "A-0=>A+0" => [ qr{ $A - $ZERO }x => sub { "$+{A} + $+{ZERO}" } ],
