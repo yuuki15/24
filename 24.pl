@@ -21,8 +21,8 @@ open my $fh, "<", "expressions.txt" or die $!;
 my @exprs = map { s/\s+//g; $_ } <$fh>; # Removes whitespace.
 close $fh;
 
-# From 0000 to 9999, iterates over 10 multichoose 4 = 715 possible
-# 4-combinations (with repetition) of digits.
+# From 0000 to 9999, iterates over the 715 possible 4-combinations (with
+# repetition) of digits.
 for my $digits (combinations_with_repetition([0 .. 9], 4)) {
     my ($a, $b, $c, $d) = @$digits;
 
