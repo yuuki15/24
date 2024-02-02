@@ -16,7 +16,7 @@ if (not defined $number_to_make) {
 # Loads the `normalize` and `negate` subroutines.
 require "./normalize.pl";
 
-# Loads the possible 733 expressions.  Cf. https://oeis.org/A247982
+# Loads the possible 733 expressions.  Cf.: https://oeis.org/A247982
 open my $fh, "<", "expressions.txt" or die $!;
 my @exprs = map { s{\s+}{}g; $_ } <$fh>; # Removes whitespace.
 close $fh;
