@@ -34,7 +34,7 @@ my $B = qr{ (?<B> $EXPR ) }x;
 # An expression whose value is 0.
 my $ZERO_EXPR = qr{
     ( $EXPR )
-    (?(?{ eval($^N) eq 0 }) | (*FAIL) )
+    (?(?{ eval($^N) eq "0" }) | (*FAIL) )
 }x;
 my $ZERO = qr{ (?<ZERO> $ZERO_EXPR ) }x;
 
@@ -45,6 +45,10 @@ my @rules = (
     # Subtraction by zero to addition.
     # "A-0=>A+0" => [ qr{ $A - $ZERO }x => sub { "$+{A} + $+{ZERO}" } ],
 );
+
+#
+# Subroutines.
+#
 
 # Returns the normal form of an expression.
 sub normalize {
