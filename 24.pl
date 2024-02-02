@@ -18,7 +18,7 @@ require "./normalize.pl";
 
 # Loads the possible 733 expressions.  Cf. https://oeis.org/A247982
 open my $fh, "<", "expressions.txt" or die $!;
-my @exprs = map { s{ \s+ }{}gx; $_ } <$fh>; # Removes whitespace.
+my @exprs = map { s/\s+//g; $_ } <$fh>; # Removes whitespace.
 close $fh;
 
 # Iterates over 715 possible combinations of digits.
