@@ -18,12 +18,8 @@ if (not defined $number_to_make) {
 
 # Loads the possible 733 expressions.  Cf. https://oeis.org/A247982.
 open my $fh, "<", "expressions.txt" or die $!;
-my @exprs = <$fh>;
+my @exprs = map { s{\s+}{}g; $_ } <$fh>; # Removes whitespace.
 close $fh;
-chomp @exprs;
-for my $expr (@exprs) {
-    $expr =~ s{\s+}{}g; # Removes whitespace.
-}
 
 # Iterates over 715 possible combinations of digits.
 for my $digits (combinations_with_repetition([0 .. 9], 4)) {
