@@ -21,6 +21,9 @@ open my $fh, "<", "expressions.txt" or die $!;
 my @exprs = <$fh>;
 close $fh;
 chomp @exprs;
+for my $expr (@exprs) {
+    $expr =~ s{\s+}{}g; # Removes whitespace.
+}
 
 # Iterates over 715 possible combinations of digits.
 for my $digits (combinations_with_repetition([0 .. 9], 4)) {
