@@ -1,3 +1,3 @@
 #!/bin/sh
-m=`perl -MList::Util=max -e 'print max map { (split /\t/)[1] } <>' "$@"`
-perl -i -nle 's/\t+$//; $n=(split /\t/)[1]; print $_ . "\t"x('$m'-$n)' "$@"
+max_number_of_tabs=`perl -MList::Util=max -e 'print max map { tr/\t// } <>' "$@"`
+perl -i -nle 'print $_ . ("\t" x ('$max_number_of_tabs' - tr/\t//))' "$@"
