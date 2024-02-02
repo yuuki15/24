@@ -16,7 +16,7 @@ if (not defined $number_to_make) {
     $number_to_make = 24;
 }
 
-# Loads the possible 733 expressions.
+# Loads the possible 733 expressions.  Cf. https://oeis.org/A247982.
 open my $fh, "<", "expressions.txt" or die $!;
 my @exprs = <$fh>;
 close $fh;
