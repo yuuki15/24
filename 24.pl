@@ -8,13 +8,13 @@
 use strict;
 use warnings;
 
-# Loads the `normalize` and `negate` subroutines.
-require "./normalize.pl";
-
 my $number_to_make = shift;
 if (not defined $number_to_make) {
     $number_to_make = 24;
 }
+
+# Loads the `normalize` and `negate` subroutines.
+require "./normalize.pl";
 
 # Loads the possible 733 expressions.  Cf. https://oeis.org/A247982.
 open my $fh, "<", "expressions.txt" or die $!;
