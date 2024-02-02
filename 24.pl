@@ -82,7 +82,11 @@ for my $numbers (combinations_with_repetition(\@numbers_to_use, 4)) {
     if (@solutions) {
         local $, = "\t";
         local $\ = "\n";
-        print join(" ", @$numbers), scalar(@solutions), @solutions;
+        print(
+            join($max < 10 ? "" : " ", @$numbers),
+            scalar(@solutions),
+            @solutions,
+        );
     }
 }
 
