@@ -3,17 +3,16 @@
 # Lists all "distinct" solutions to the 24 puzzle.
 #
 # Usage:
-# perl 24.pl [min number to use=1] [max number to use=13] [number to make=24]
+# perl 24.pl [number to make=24] [min number to use=0] [max number to use=13]
 #
 use v5.10;
 use strict;
 use warnings;
 use autodie;
 
-my $min_number_to_use = shift // 1;
-my $max_number_to_use = shift // 13;
-my $number_to_make    = shift // 24;
-
+my $number_to_make    = 0 + (shift // 24);
+my $min_number_to_use = 0 + (shift // 0);
+my $max_number_to_use = 0 + (shift // 13);
 my @numbers_to_use    = ($min_number_to_use .. $max_number_to_use);
 
 # Loads the `normalize` and `negate` subroutines.
@@ -62,13 +61,10 @@ for my $numbers (combinations_with_repetition(\@numbers_to_use, 4)) {
     }
 
     if (@solutions) {
+        local $| = 1;
         local $, = "\t";
         local $\ = "\n";
-        print(
-            join($max_number_to_use < 10 ? "" : " ", @$numbers),
-            scalar(@solutions),
-            @solutions,
-        );
+        print join(" ", @$numbers), scalar(@solutions), @solutions;
     }
 }
 

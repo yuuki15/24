@@ -1,6 +1,6 @@
 all:
-	perl 24.pl 0 9 10 > 10.tsv
-	perl 24.pl 1 13 24 > 24.tsv
-	for f in *.tsv; do \
-	    sh tsvfix.sh $$f; \
+	set -x; \
+	for n in `seq -w 0 24`; do \
+		perl 24.pl $$n > $$n.tsv; \
+		sh tsvfix.sh $$n.tsv; \
 	done

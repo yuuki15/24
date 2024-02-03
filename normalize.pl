@@ -1,6 +1,7 @@
 #!/usr/bin/env perl
 #
-# Normalizes an expression that represents a solution to the 24 puzzle.
+# Normalizes an expression that represents a solution to the 24 puzzle.  The
+# expression must be in a form like ((1+2)-3)*4.
 #
 # Usage:
 # perl normalize.pl
@@ -99,7 +100,7 @@ my @rules = (
     "0/A=>0*A" => [ qr{ $ZERO / $A }x => sub { "$+{ZERO} * $+{A}" } ],
 
     # Operators in the other factor of multiplication by zero to addition.
-    # E.g., (1-(2/3))*0 => 0*(1+(2+3)).
+    # E.g., ((1-2)/3)*0 => 0*((1+2)+3).
     "A*0=>0*f(A)" => [
         qr{
             $A_TIMES_ZERO
@@ -409,7 +410,8 @@ sub normalize {
 
 if (not caller) {
     $VERBOSE = 1;
-    for my $expr (@ARGV) {
+    while (my $expr = <>) {
+        chomp $expr;
         warn "$expr\n";
         print normalize($expr), "\n";
         warn "\n";
