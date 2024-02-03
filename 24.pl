@@ -25,7 +25,7 @@ my @expressions = map { s/\s+//g; $_ } <$fh>; # Removes whitespace.
 close $fh;
 
 # Iterates over the possible 4-combinations with repetition of numbers.  If 13
-# numbers are used, there would be C(13+4-1, 4) = 1820 ways.  Cf.:
+# numbers are used, there are C(13+4-1, 4) = 1820 ways.  Cf.:
 # https://mathworld.wolfram.com/Multichoose.html
 for my $numbers (combinations_with_repetition(\@numbers_to_use, 4)) {
     my ($a, $b, $c, $d) = @$numbers;
