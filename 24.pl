@@ -19,13 +19,13 @@ my @numbers_to_use    = ($min_number_to_use .. $max_number_to_use);
 # Loads the `normalize` and `negate` subroutines.
 require "./normalize.pl";
 
-# Loads the possible 733 expressions.  Cf.: https://oeis.org/A247982
+# Loads the possible 733 expressions.  Cf. https://oeis.org/A247982
 open my $fh, "<", "expressions.txt";
-my @expressions = map { s/\s+//g; $_ } <$fh>; # Removes whitespace.
+my @expressions = map { s/\s+//g; $_ } <$fh>;
 close $fh;
 
 # Iterates over the possible 4-combinations with repetition of numbers.  If 13
-# numbers are used, there are C(13+4-1, 4) = 1820 ways.  Cf.:
+# numbers are used, there are C(13+4-1, 4) = 1820 ways.  Cf.
 # https://mathworld.wolfram.com/Multichoose.html
 for my $numbers (combinations_with_repetition(\@numbers_to_use, 4)) {
     my ($a, $b, $c, $d) = @$numbers;
@@ -47,7 +47,6 @@ for my $numbers (combinations_with_repetition(\@numbers_to_use, 4)) {
             # The expression with variables substituted with numbers (but not
             # evaluated).
             my $subst_expr = eval qq("$expr");
-
             if ($value < 0) {
                 $subst_expr = negate($subst_expr);
                 $subst_expr =~ s{ \s+ | ^\( | \)$ }{}gx;
