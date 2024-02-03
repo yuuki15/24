@@ -3,16 +3,17 @@
 # Lists all "distinct" solutions to the 24 puzzle.
 #
 # Usage:
-# perl 24.pl [number to make=24] [min number to use=1] [max number to use=13]
+# perl 24.pl [min number to use=1] [max number to use=13] [number to make=24]
 #
 use v5.10;
 use strict;
 use warnings;
 use autodie;
 
-my $number_to_make    = shift // 24;
 my $min_number_to_use = shift // 1;
 my $max_number_to_use = shift // 13;
+my $number_to_make    = shift // 24;
+
 my @numbers_to_use    = ($min_number_to_use .. $max_number_to_use);
 
 # Loads the `normalize` and `negate` subroutines.
