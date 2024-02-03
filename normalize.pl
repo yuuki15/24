@@ -19,7 +19,7 @@ use re "eval";
 #
 
 # A number.
-my $NUMBER   = qr{ \d+ }x;
+my $NUMBER   = qr{ \d+ (?! \d ) }x;
 
 # An operator.
 my $OPERATOR = qr{ [+\-*/] }x;
