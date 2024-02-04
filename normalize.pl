@@ -449,7 +449,7 @@ if (not caller) {
     while (my $expr = <>) {
         chomp $expr;
         warn "$expr\n";
-        print normalize($expr), "\n";
+        say normalize($expr);
         warn "\n";
     }
 }
