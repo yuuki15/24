@@ -101,7 +101,7 @@ my @rules = (
     # Division where the dividend is zero to multiplication.
     "0/A=>0*A" => [ qr{ $ZERO / $A }x => sub { "$+{ZERO} * $+{A}" } ],
 
-    # Operators in the other factor of multiplication by zero to addition.
+    # All operators in the other factor of multiplication by zero to addition.
     # E.g., ((1-2)/3)*0 => 0*((1+2)+3).
     "A*0=>0*f(A)" => [
         qr{
