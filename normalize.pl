@@ -53,7 +53,8 @@ my $X2 = qr{
 my $ZERO_EXPR = qr{
     ( $EXPR )
     (?(?{
-        # `$^N` is like `$1` but works even if embedded in other patterns.
+        # `$^N` is the same as `$1` but works even if embedded in other
+        # patterns.
         eval($^N) eq "0"
     }) | (*FAIL) )
 }x;
