@@ -1,7 +1,7 @@
 #!/usr/bin/env perl
 #
 # Normalizes an expression that represents a solution to the 24 puzzle.  The
-# expression must be in the form ((1+2)-3)*4.
+# expression must be in the form ((1+5)*8)/2.
 #
 # Usage:
 # perl normalize.pl
