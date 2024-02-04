@@ -104,9 +104,7 @@ my @rules = (
     # All operators in the other factor of multiplication by zero to addition.
     # E.g., ((1-2)/3)*0 => 0*((1+2)+3).
     #
-    # A * 0 => 0 * addify(A)
-    # 0 * A => 0 * addify(A)
-    # if A involves operators other than addition
+    # A * 0 => 0 * addify(A) if A involves operators other than addition
     "A*0=>0*f(A)" => [
         qr{
             $A_TIMES_ZERO
@@ -115,10 +113,6 @@ my @rules = (
         => sub { "$+{ZERO} * " . addify($+{A}) }
     ],
     # (A * 0) * B => 0 * addify(A + B)
-    # (0 * A) * B => 0 * addify(A + B)
-    #
-    # B * (A * 0) => 0 * addify(A + B)
-    # B * (0 * A) => 0 * addify(A + B)
     "(A*0)*B=>0*f(A+B)" => [
         qr{
             \( $A_TIMES_ZERO \) \* $B
