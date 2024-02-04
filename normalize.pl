@@ -43,7 +43,7 @@ my $C = qr{ (?<C> $EXPR ) }x;
 
 my $X = qr{ (?<X> $EXPR ) }x;
 
-# An expression whose value is equal to `$X`.
+# An expression whose value is equal to X.
 my $X2 = qr{
     (?<X2> $EXPR )
     (?(?{ eval("($+{X2}) - ($+{X})") eq "0" }) | (*FAIL) )
