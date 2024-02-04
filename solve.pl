@@ -3,7 +3,7 @@
 # Lists all "distinct" solutions to the 24 puzzle.
 #
 # Usage:
-# perl 24.pl [number to make=24] [min number to use=0] [max number to use=13]
+# perl solve.pl [number to make=24] [min number to use=0] [max number to use=13]
 #
 # License: Artistic-2.0 OR GPL-2.0-or-later
 #
