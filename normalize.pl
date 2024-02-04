@@ -123,6 +123,8 @@ my @rules = (
     ],
 
     # Addition by non-literal zero to the factor of multiplication by zero.
+    #
+    # (A * 0) + 0' => 0 * addify(0' + A) if 0' != "0"
     "(A*0)+0'=>0*f(0'+A)" => [
         qr{
             \( $A_TIMES_ZERO \) \+ (?! 0 ) $ZERO2
@@ -133,6 +135,8 @@ my @rules = (
     ],
 
     # Multiplication by one to the factor of multiplication by zero.
+    #
+    # (A * 0) + (B * 1) => (0 * addify(1 + A)) + B
     "(A*0)+(B*1)=>(0*f(1+A))+B" => [
         qr{ \( $A_TIMES_ZERO \) \+ \( $B_TIMES_ONE \) }x
         => sub { "($+{ZERO} * " . addify("($+{ONE} + $+{A})") . ") + $+{B}" }
