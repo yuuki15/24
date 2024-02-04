@@ -312,7 +312,8 @@ my @rules = (
     ],
 
     # Negative addition to subtraction.
-    # A + B => B - (-A) if A < 0
+    #
+    # A + B => B - negate(A) if A < 0
     "A+B=>B-(-A)" => [
         qr{
             $A \+ $B
@@ -320,6 +321,7 @@ my @rules = (
         }x
         => sub { "$+{B} - " . negate($+{A}) }
     ],
+    # A + B => A - negate(B) if B < 0
     "A+B=>A-(-B)" => [
         qr{
             $A \+ $B
@@ -329,6 +331,8 @@ my @rules = (
     ],
 
     # Negative subtraction to addition.
+    #
+    # A - B => A + negate(B) if B < 0
     "A-B=>A+(-B)" => [
         qr{
             $A - $B
@@ -338,6 +342,10 @@ my @rules = (
     ],
 
     # Negative multiplication and division to positive.
+    #
+    # A * B => negate(A) * negate(B)
+    # A / B => negate(A) / negate(B)
+    # if (A <= 0 and B < 0) or (A < 0 and B <= 0)
     "AB=>(-A)(-B)" => [
         qr{
             $A (?<OP> [*/] ) $B
@@ -374,8 +382,7 @@ sub addify {
     return $expr;
 }
 
-# Negates an expression whose value is negative.  The result does not contain a
-# unary minus.
+# Negates a negative expression.  The result does not contain a unary minus.
 sub negate {
     my $expr = shift;
     $expr =~ s/\s+//g;
