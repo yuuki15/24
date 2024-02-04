@@ -104,7 +104,9 @@ my @rules = (
     # All operators in the other factor of multiplication by zero to addition.
     # E.g., ((1-2)/3)*0 => 0*((1+2)+3).
     #
-    # A * 0 => 0 * addify(A) if A involves operators other than addition
+    # A * 0 => 0 * addify(A)
+    # 0 * A => 0 * addify(A)
+    # if A involves operators other than addition
     "A*0=>0*f(A)" => [
         qr{
             $A_TIMES_ZERO
@@ -113,6 +115,10 @@ my @rules = (
         => sub { "$+{ZERO} * " . addify($+{A}) }
     ],
     # (A * 0) * B => 0 * addify(A + B)
+    # (0 * A) * B => 0 * addify(A + B)
+    #
+    # B * (A * 0) => 0 * addify(A + B)
+    # B * (0 * A) => 0 * addify(A + B)
     "(A*0)*B=>0*f(A+B)" => [
         qr{
             \( $A_TIMES_ZERO \) \* $B
@@ -157,6 +163,9 @@ my @rules = (
     ],
 
     # Multiplication by (X / X) to addition by (X - X).
+    #
+    # (A * X) / X => (A + X) - X
+    # A * (X / X) => (A + X) - X
     "(A*X)/X=>(A+X)-X" => [
         qr{
             \( $A_TIMES_X \) / $X2
@@ -167,10 +176,13 @@ my @rules = (
         }x
         => sub { "($+{A} + $+{X}) - $+{X2}" }
     ],
+    # (A * (B * X)) / X => ((A * B) + X) - X
     "(A*(B*X))/X=>((A*B)+X)-X" => [
         qr{ \( $A \* \( $B_TIMES_X \) \) / $X2 }x
         => sub { "(($+{A} * $+{B}) + $+{X}) - $+{X2}" }
     ],
+    # (A * X) / (B * X) => ((A / B) + X) - X
+    # (A / X) * (X / B) => ((A / B) + X) - X
     "(A*X)/(B*X)=>((A/B)+X)-X" => [
         qr{
             \( $A_TIMES_X \) / \( $B_TIMES_X2 \)
