@@ -282,9 +282,13 @@ my @rules = (
     # if . = * or /
     "((A+X)-X).B=>((A.B)+X)-X" => [
         qr{
-            \( \( $A_PLUS_X \) - $X2 \) (?<OP> [*/] ) (?! $ONE_EXPR ) $B
+            \( \( $A_PLUS_X \) - $X2 \)
+            (?<OP> [*/] )
+            (?! $ONE_EXPR ) $B
             |
-            (?! $ONE_EXPR ) $A (?<OP> [*/] ) \( \( $B_PLUS_X \) - $X2 \)
+            (?! $ONE_EXPR ) $A
+            (?<OP> [*/] )
+            \( \( $B_PLUS_X \) - $X2 \)
         }x
         => sub { "(($+{A} $+{OP} $+{B}) + $+{X}) - $+{X2}" }
     ],
