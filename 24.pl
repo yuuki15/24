@@ -46,6 +46,7 @@ for my $numbers (combinations_with_repetition(\@numbers_to_use, 4)) {
             # The expression with variables substituted with numbers (but not
             # evaluated).
             my $subst_expr = eval qq("$expr");
+
             if ($value < 0) {
                 $subst_expr = negate($subst_expr);
                 $subst_expr =~ s{ \s+ | ^\( | \)$ }{}gx;
