@@ -103,16 +103,16 @@ my @rules = (
 
     # All operators in the other factor of multiplication by zero to addition.
     # E.g., ((1-2)/3)*0 => 0*((1+2)+3).
+    #
+    # A * 0 => 0 * addify(A) if A involves operators other than addition
     "A*0=>0*f(A)" => [
         qr{
             $A_TIMES_ZERO
-            (?(?{
-                # Checks if A involves operators other than addition.
-                $+{A} =~ m{ (?! \+ ) $OPERATOR }x
-            }) | (*FAIL) )
+            (?(?{ $+{A} =~ m{ (?! \+ ) $OPERATOR }x }) | (*FAIL) )
         }x
         => sub { "$+{ZERO} * " . addify($+{A}) }
     ],
+    # (A * 0) * B => 0 * addify(A + B)
     "(A*0)*B=>0*f(A+B)" => [
         qr{
             \( $A_TIMES_ZERO \) \* $B
@@ -294,6 +294,7 @@ my @rules = (
     ],
 
     # Negative addition to subtraction.
+    # A + B => B - (-A) if A < 0
     "A+B=>B-(-A)" => [
         qr{
             $A \+ $B
