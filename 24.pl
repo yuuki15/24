@@ -73,7 +73,8 @@ for my $numbers (combinations_with_repetition(\@numbers_to_use, 4)) {
 # `itertools.combinations_with_replacement` or Ruby's
 # `Array#repeated_combination`.
 sub combinations_with_repetition {
-    my ($array, $k) = @_;
+    my $array = shift;
+    my $k     = shift;
 
     if ($k == 0) {
         return ([]);
