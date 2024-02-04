@@ -139,7 +139,11 @@ my @rules = (
     # (A * 0) + (B * 1) => (0 * addify(1 + A)) + B
     "(A*0)+(B*1)=>(0*f(1+A))+B" => [
         qr{ \( $A_TIMES_ZERO \) \+ \( $B_TIMES_ONE \) }x
-        => sub { "($+{ZERO} * " . addify("($+{ONE} + $+{A})") . ") + $+{B}" }
+        => sub {
+            "($+{ZERO} * "
+            . addify("($+{ONE} + $+{A})")
+            . ") + $+{B}"
+        }
     ],
 
     # Multiplication by (1 * 1) to addition by (1 - 1).
