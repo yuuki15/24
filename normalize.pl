@@ -7,7 +7,7 @@
 # perl normalize.pl
 # [Reads expressions line by line from STDIN...]
 #
-# License: Artistic-1.0-Perl OR GPL-1.0-or-later
+# License: Artistic-2.0 OR GPL-2.0-or-later
 #
 use v5.10;
 use strict;

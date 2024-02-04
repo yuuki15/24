@@ -5,7 +5,7 @@
 # Usage:
 # perl 24.pl [number to make=24] [min number to use=0] [max number to use=13]
 #
-# License: Artistic-1.0-Perl OR GPL-1.0-or-later
+# License: Artistic-2.0 OR GPL-2.0-or-later
 #
 use v5.10;
 use strict;
