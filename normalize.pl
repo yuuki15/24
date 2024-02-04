@@ -241,7 +241,7 @@ my @rules = (
         => sub { "$+{A} $+{OP} ($+{B} $+{OP} $+{C})" }
     ],
 
-    # Associativity of addition and multiplication.
+    # Associativity.
     #
     # (A + B) + C => A + (B + C) if C != 0
     # (A * B) * C => A * (B * C) if C != 1
