@@ -180,9 +180,13 @@ my @rules = (
     # A . (B + 0) => 0 + (A . B) if not (A = 0 and . = +)
     "(A+0).B=>0+(A.B)" => [
         qr{
-            \( $A_PLUS_ZERO \) (?! \+ $ZERO_EXPR ) $OP $B
+            \( $A_PLUS_ZERO \)
+            (?! \+ $ZERO_EXPR )
+            $OP $B
             |
-            (?! $ZERO_EXPR \+ ) $A $OP \( $B_PLUS_ZERO \)
+            (?! $ZERO_EXPR \+ )
+            $A $OP
+            \( $B_PLUS_ZERO \)
         }x
         => sub { "$+{ZERO} + ($+{A} $+{OP} $+{B})" }
     ],
@@ -190,10 +194,10 @@ my @rules = (
     # Separation of multiplication by one.
     #
     # (A * 1) . B => 1 * (A . B)
-    # if not (B = 0 and . = +) and not (B = 1 and . = *)
+    # if not ((B = 0 and . = +) or (B = 1 and . = *))
     #
     # A . (B * 1) => 1 * (A . B)
-    # if not (A = 0 and . = +) and not (A = 1 and . = *)
+    # if not ((A = 0 and . = +) or (A = 1 and . = *))
     "(A*1).B=>1*(A.B)" => [
         qr{
             \( $A_TIMES_ONE \)
