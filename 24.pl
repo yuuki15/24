@@ -41,7 +41,7 @@ for my $numbers (combinations_with_repetition(\@numbers_to_use, 4)) {
             next;
         }
 
-        # Checks if the value is equal to the number to make, ignoring the sign.
+        # Checks if the value is equal to the target number, ignoring the sign.
         if (abs($value) eq $number_to_make) {
             # The expression with variables substituted with numbers (but not
             # evaluated).
