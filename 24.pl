@@ -10,9 +10,9 @@ use strict;
 use warnings;
 use autodie;
 
-my $number_to_make    = 0 + (shift // 24);
-my $min_number_to_use = 0 + (shift // 0);
-my $max_number_to_use = 0 + (shift // 13);
+my $number_to_make    = 0+(shift // 24);
+my $min_number_to_use = 0+(shift // 0);
+my $max_number_to_use = 0+(shift // 13);
 my @numbers_to_use    = ($min_number_to_use .. $max_number_to_use);
 
 # Loads the `normalize` and `negate` subroutines.
