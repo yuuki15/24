@@ -243,6 +243,7 @@ my @rules = (
     # Associativity of mixed addition and subtraction.
     #
     # A + (B - C) => (A + B) - C if A != 0
+    # A - (C - B) => (A + B) - C
     "A+(B-C)=>(A+B)-C" => [
         qr{
             (?! $ZERO_EXPR ) $A \+ \( $B - $C \)
