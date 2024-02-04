@@ -257,6 +257,7 @@ my @rules = (
     # Associativity of mixed addition and subtraction.
     #
     # A + (B - C) => (A + B) - C if A != 0
+    # A - (C - B) => (A + B) - C
     "A+(B-C)=>(A+B)-C" => [
         qr{
             (?! $ZERO_EXPR ) $A \+ \( $B - $C \)
@@ -267,6 +268,7 @@ my @rules = (
         }x
         => sub { "($+{A} + $+{B}) - $+{C}" }
     ],
+    # (A - B) - C => A - (B + C)
     "(A-B)-C=>A-(B+C)" => [
         qr{ \( $A - $B \) - $C }x => sub { "$+{A} - ($+{B} + $+{C})" }
     ],
@@ -274,6 +276,7 @@ my @rules = (
     # Associativity of mixed multiplication and division.
     #
     # A * (B / C) => (A * B) / C if A != 1
+    # A / (C / B) => (A * B) / C
     "A*(B/C)=>(A*B)/C" => [
         qr{
             (?! $ONE_EXPR ) $A \* \( $B / $C \)
@@ -284,6 +287,7 @@ my @rules = (
         }x
         => sub { "($+{A} * $+{B}) / $+{C}" }
     ],
+    # (A / B) / C => A / (B * C)
     "(A/B)/C=>A/(B*C)" => [
         qr{ \( $A / $B \) / $C }x => sub { "$+{A} / ($+{B} * $+{C})" }
     ],
