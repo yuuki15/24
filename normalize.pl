@@ -73,7 +73,6 @@ my $A_PLUS_ZERO  = qr{ $A \+ $ZERO | $ZERO \+ $A }x;
 my $B_PLUS_ZERO  = qr{ $B \+ $ZERO | $ZERO \+ $B }x;
 
 my $A_TIMES_ZERO = qr{ $A \* $ZERO | $ZERO \* $A }x;
-my $B_TIMES_ZERO = qr{ $B \* $ZERO | $ZERO \* $B }x;
 
 my $A_TIMES_ONE  = qr{ $A \* $ONE | $ONE \* $A }x;
 my $B_TIMES_ONE  = qr{ $B \* $ONE | $ONE \* $B }x;
