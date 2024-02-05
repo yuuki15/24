@@ -1,5 +1,5 @@
 #!/bin/sh
-for start in $(seq 0 100 1000); do
+for start in $(seq 0 100 999); do
     end=$(($start + 99))
 
     output_dir=solutions/$start-$end
