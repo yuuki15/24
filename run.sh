@@ -2,13 +2,10 @@
 for start in $(seq 0 100 1000); do
     end=$(($start + 99))
 
-    start_padded=$(printf '%04d' $start)
-    end_padded=$(printf '%04d' $end)
-
-    output_dir=solutions/$start_padded-$end_padded
+    output_dir=solutions/$start-$end
     mkdir -p $output_dir
 
-    for target_number in $(seq -f '%04g' $start $end); do
+    for target_number in $(seq $start $end); do
         output_file=$output_dir/$target_number.tsv
         (set -x; time perl solve.pl $target_number > $output_file)
 
