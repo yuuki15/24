@@ -2,7 +2,7 @@
 
 [Mint](https://min.togetter.com/eKWLarx)
 
-This is a Perl script to list "distinct" solutions to the [24 puzzle](https://en.wikipedia.org/wiki/24_(puzzle)).  The output of this script is organized in the [solutions](./solutions) directory and is licensed under [CC0](https://creativecommons.org/publicdomain/zero/1.0/).
+This is a Perl script to list "distinct" solutions to the [24 puzzle](https://en.wikipedia.org/wiki/24_(puzzle)).  The lists of solutions are organized in the [solutions](./solutions) directory and are licensed under [CC0](https://creativecommons.org/publicdomain/zero/1.0/).
 
 ## History
 
