@@ -12,8 +12,7 @@ for start in $(seq 0 100 1000); do
         out=$dir/$n.tsv
         (set -x; time perl solve.pl $n 0 1 > $out)
 
-        # Unjags the TSV file to make GitHub happy.  Cf.
-        # https://docs.github.com/en/repositories/working-with-files/using-files/working-with-non-code-files#rendering-csv-and-tsv-data
+        # Unjags the TSV file to make GitHub happy.
         max_number_of_tabs=$(perl -MList::Util=max -e 'print max map { tr/\t// } <>' $out)
         perl -i -nle 'print $_ . ("\t" x ('$max_number_of_tabs' - tr/\t//))' $out
     done
