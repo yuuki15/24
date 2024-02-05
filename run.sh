@@ -10,7 +10,7 @@ for start in $(seq 0 100 1000); do
 
     for n in $(seq -f '%04g' $start $end); do
         out=$dir/$n.tsv
-        (set -x; time perl solve.pl $n 0 1 > $out)
+        (set -x; time perl solve.pl $n > $out)
 
         # Unjags the TSV file to make GitHub happy.
         max_number_of_tabs=$(perl -MList::Util=max -e 'print max map { tr/\t// } <>' $out)
