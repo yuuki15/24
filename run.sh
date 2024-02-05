@@ -8,9 +8,9 @@ for start in $(seq 0 100 1000); do
     dir=solutions/$start_padded-$end_padded
     mkdir -p $dir
 
-    for n in $(seq -f '%04g' $start $end); do
-        out=$dir/$n.tsv
-        (set -x; time perl solve.pl $n > $out)
+    for target_number in $(seq -f '%04g' $start $end); do
+        out=$dir/$target_number.tsv
+        (set -x; time perl solve.pl $target_number > $out)
 
         # Unjags the TSV file to make GitHub happy.
         max_number_of_tabs=$(perl -MList::Util=max -e 'print max map { tr/\t// } <>' $out)
