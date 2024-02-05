@@ -11,7 +11,7 @@ A Perl script to list "distinct" solutions to the [24 puzzle](https://en.wikiped
 * Jul 2022
     * I realized that eliminating duplicate solutions could not be done with a CAS such as SymPy and started my research.
 * Sep 2022
-    * My research was completed, except for the 0 puzzle.
+    * I finished writing the script and failed to solve the 0 puzzle.
 * Jan 2023
     * I abandoned the research and uploaded the results to [24-puzzle-solver/24-puzzle-solver](https://github.com/24-puzzle-solver/24-puzzle-solver).
 * Feb 2024
