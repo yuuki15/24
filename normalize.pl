@@ -422,9 +422,7 @@ sub normalize {
     if ($depth == 0) {
         $expr =~ s/\s+//g;
     }
-    elsif ($VERBOSE) {
-        warn "depth $depth\n";
-    }
+    elsif ($VERBOSE) { warn "depth $depth\n" }
 
     my $should_recurse;
 
