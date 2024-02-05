@@ -5,7 +5,7 @@ for start in $(seq 0 100 1000); do
     start_padded=$(printf '%04d' $start)
     end_padded=$(printf '%04d' $end)
 
-    dir=solutions-test/$start_padded-$end_padded
+    dir=solutions/$start_padded-$end_padded
     mkdir -p $dir
 
     for n in $(seq -f '%04g' $start $end); do
