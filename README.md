@@ -18,10 +18,10 @@ This is a Perl script to list "distinct" solutions to the [24 puzzle](https://en
 * Yuuki (2018).  ["Ten puzzle"](https://archive.today/2018.08.25-001836/http://konno.co.nf/%E3%83%86%E3%83%B3%E3%83%91%E3%82%BA%E3%83%AB) (in Japanese).
     * Mentions the (super-)Catalan numbers.
 * OEIS
-    * [A140606 (Number of inequivalent expressions involving n operands)](https://oeis.org/A140606)
-    * [A182173 (Number of inequivalent expressions involving n operands)](https://oeis.org/A182173) (allowing unary minus)
-    * [A247982 (Number of inequivalent expressions involving n operands, ignoring sign)](https://oeis.org/A247982)
-    * [A351922 (Consider well-formed strings consisting of n operands, n - 1 binary operators +, -, *, /, ^, and n-1 pairs of parentheses, and call two such strings equivalent if they are algebraically identical; a(n) is the number of equivalence classes)](https://oeis.org/A351922) (allowing exponentiation)
+    * [A140606](https://oeis.org/A140606)
+    * [A182173](https://oeis.org/A182173) (allowing unary minus)
+    * [A247982](https://oeis.org/A247982) (ignoring sign)
+    * [A351922](https://oeis.org/A351922) (allowing exponentiation)
 
 ## History
 
