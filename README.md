@@ -7,7 +7,15 @@ This is a Perl script to list "distinct" solutions to the [24 puzzle](https://en
 * [Solutions to 24](solutions/0-99/24.tsv)
 * [Solutions to 10](solutions/0-99/10.tsv)
 
+## Bibliography
+
+* Dominus, Mark Jason (2017).  ["Recognizing when two arithmetic expressions are essentially the same"](https://blog.plover.com/math/24-puzzle-2.html).
+    * Describes the Ezpr data structure, which may be better than regex.
+
 ## History
+
+<details>
+<summary>[show]</summary>
 
 * -2013: Learned about the 10 puzzle (a variation popular in Japan).
 * 2018-08: Published an [article](http://archive.today/2018.08.25-001836/http://konno.co.nf/%E3%83%86%E3%83%B3%E3%83%91%E3%82%BA%E3%83%AB) (in Japanese) on a naive solver in Ruby.
@@ -15,3 +23,5 @@ This is a Perl script to list "distinct" solutions to the [24 puzzle](https://en
 * 2022-09: Finished writing the script and failed to solve the [0 puzzle](solutions/0-99/0.tsv).
 * 2023-01: Abandoned the research and archived the results on [24-puzzle-solver/24-puzzle-solver](https://github.com/24-puzzle-solver/24-puzzle-solver).
 * 2024-02: Reorganized the results in this repo, essentially unchanged.
+
+</details>
