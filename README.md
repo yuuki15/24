@@ -11,8 +11,10 @@ This is a Perl script to list "distinct" solutions to the [24 puzzle](https://en
 
 * [4nums.com](https://www.4nums.com/) (2012).
     * Describes the [theory](https://www.4nums.com/theory/) of equivalence and provides a [web service](https://www.4nums.com/solutions/100/) that returns distinct solutions to a.b.c.d = N, where 1 <= a, b, c, d <= 99 and 1 <= N <= 9999.
+* Azuma, Seiichi (2014).  ["Expressions with n variables"](https://searial.web.fc2.com/math/sisoku.html).
+    * Describes an algorithm for generating inequivalent expressions.
 * Dominus, Mark Jason (2017).  ["Recognizing when two arithmetic expressions are essentially the same"](https://blog.plover.com/math/24-puzzle-2.html).
-    * Describes the [Ezpr](https://github.com/mjdominus/24-puzzle-solver) data structure, which may be better than regex.
+    * Describes the [Ezpr](https://github.com/mjdominus/24-puzzle-solver) data structure.
 * Yuuki (2018).  ["Ten puzzle"](https://archive.today/2018.08.25-001836/http://konno.co.nf/%E3%83%86%E3%83%B3%E3%83%91%E3%82%BA%E3%83%AB) (in Japanese).
     * Mentions the (super-)Catalan numbers.
 
