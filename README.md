@@ -2,15 +2,19 @@
 
 [Mint](https://min.togetter.com/eKWLarx)
 
-This is a Perl script to list "distinct" solutions to the [24 puzzle](https://en.wikipedia.org/wiki/24_(puzzle)).  The lists of solutions to each *N* puzzle are organized in the [solutions](solutions) directory and are licensed under [CC0](https://creativecommons.org/publicdomain/zero/1.0/).
+This is a Perl script to list "distinct" solutions to the [24 puzzle](https://en.wikipedia.org/wiki/24_(puzzle)).  The lists of solutions to each N puzzle are organized in the [solutions](solutions) directory and are licensed under [CC0](https://creativecommons.org/publicdomain/zero/1.0/).
 
 * [Solutions to 24](solutions/0-99/24.tsv)
 * [Solutions to 10](solutions/0-99/10.tsv)
 
 ## Bibliography
 
+* [4nums.com](https://www.4nums.com/) (2012).
+    * Describes the [theory](https://www.4nums.com/theory/) of equivalence and provides a [web service](https://www.4nums.com/solutions/100/) that returns distinct solutions to a.b.c.d = N, where 1 <= a, b, c, d <= 99 and 1 <= N <= 9999.
 * Dominus, Mark Jason (2017).  ["Recognizing when two arithmetic expressions are essentially the same"](https://blog.plover.com/math/24-puzzle-2.html).
-    * Describes the Ezpr data structure, which may be better than regex.
+    * Describes the [Ezpr](https://github.com/mjdominus/24-puzzle-solver) data structure, which may be better than regex.
+* Yuuki (2018).  ["Ten puzzle"](https://archive.today/2018.08.25-001836/http://konno.co.nf/%E3%83%86%E3%83%B3%E3%83%91%E3%82%BA%E3%83%AB) (in Japanese).
+    * Mentions the (super-)Catalan numbers.
 
 ## History
 
@@ -18,7 +22,6 @@ This is a Perl script to list "distinct" solutions to the [24 puzzle](https://en
 <summary>[show]</summary>
 
 * -2013: Learned about the 10 puzzle (a variation popular in Japan).
-* 2018-08: Published an [article](http://archive.today/2018.08.25-001836/http://konno.co.nf/%E3%83%86%E3%83%B3%E3%83%91%E3%82%BA%E3%83%AB) (in Japanese) on a naive solver in Ruby.
 * 2022-07: Realized that eliminating duplicate solutions could not be done with a CAS such as SymPy and started the research.
 * 2022-09: Finished writing the script and failed to solve the [0 puzzle](solutions/0-99/0.tsv).
 * 2023-01: Abandoned the research and archived the results on [24-puzzle-solver/24-puzzle-solver](https://github.com/24-puzzle-solver/24-puzzle-solver).
