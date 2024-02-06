@@ -20,7 +20,7 @@ This is a Perl script to list "distinct" solutions to the [24 puzzle](https://en
 * Fan, Mei Hui (2022).  [mhfan/inrust](https://github.com/mhfan/inrust).
     * Solvers written in Rust and C++.
 * Yuuki (2018).  ["Ten puzzle"](https://archive.today/2018.08.25-001836/http://konno.co.nf/%E3%83%86%E3%83%B3%E3%83%91%E3%82%BA%E3%83%AB) (in Japanese).
-    * Remarks on (super-)Catalan numbers.
+    * Remarks on the (super-)Catalan numbers.
 * OEIS
     * Du, Zhao Hui (2008).  [A140606](https://oeis.org/A140606) (Number of inequivalent expressions involving n operands).
     * Radcliffe, David (2012).  [A182173](https://oeis.org/A182173) (allowing unary minus).
