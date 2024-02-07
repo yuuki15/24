@@ -32,7 +32,7 @@ This is a Perl script to list "distinct" solutions to the [24 puzzle](https://en
 <details>
 <summary>[show]</summary>
 
-* -2013: Learned about the 10 puzzle (a variation popular in Japan).
+* - 2013: Learned about the 10 puzzle (a variation popular in Japan).
 * 2022-07: Realized that eliminating duplicate solutions could not be done with a CAS such as SymPy and started the research.
 * 2022-09: Finished writing the script and failed to solve the [0 puzzle](solutions/0-99/0.tsv).
 * 2023-01: Abandoned the research and archived the results on [24-puzzle-solver/24-puzzle-solver](https://github.com/24-puzzle-solver/24-puzzle-solver).
