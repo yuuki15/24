@@ -9,12 +9,12 @@ This is a Perl script to list "distinct" solutions to the [24 puzzle](https://en
 
 ## Bibliography
 
-* [4nums.com](https://www.4nums.com/) (2012).
-    * A [theory](https://www.4nums.com/theory/) and a [web service](https://www.4nums.com/solutions/100/) that returns distinct solutions to a.b.c.d = N, where 1 <= a, b, c, d <= 99 and 1 <= N <= 9999.
 * [auntyellow/24](https://github.com/auntyellow/24) (2017).
     * Solvers written in JavaScript and Java.
 * Azuma, Seiichi (2014).  ["Expressions with n variables"](https://searial.web.fc2.com/math/sisoku.html).
     * An algorithm for generating inequivalent expressions.
+* Chang, Cheng (2012).  [4nums.com](https://www.4nums.com/).
+    * A [theory](https://www.4nums.com/theory/) and a [web service](https://www.4nums.com/solutions/100/) that returns distinct solutions to a.b.c.d = N, where 1 <= a, b, c, d <= 99 and 1 <= N <= 9999.
 * Dominus, Mark Jason (2017).  ["Recognizing when two arithmetic expressions are essentially the same"](https://blog.plover.com/math/24-puzzle-2.html).
     * The Ezpr data structure and a [solver](https://github.com/mjdominus/24-puzzle-solver) written in Perl.
 * Fan, Mei Hui (2022).  [mhfan/inrust](https://github.com/mhfan/inrust).
